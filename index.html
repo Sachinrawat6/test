@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory App</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&amp;family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
+</head>
+<body>
+
+ <!-- Navbar -->
+ <nav class="navbar">
+  <p>Qurvii</p>
+  <h1>Inventory Management System</h1>
+</nav>
+
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2 class="download">Download Options</h2>
+      <button id="downloadStock">Download Inventory File</button>
+      <button id="downloadLabel">Download MRP label</button>
+      <button id="downloadBarcodes">Download Barcodes</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      
+      <!-- <hr> -->
+      <form id="inventoryForm">
+        <label for="styleNumber">Style Number:</label>
+        <input type="text" id="styleNumber" name="styleNumber" required>
+        
+        <!-- <label for="color">Color:</label>
+        <input type="text" id="color" name="color" required> -->
+        
+        <label for="size">Size:</label>
+        <select id="size" name="size" required>
+            <option value="">Select</option>
+          <option value="XXS">XXS</option>
+          <option value="XS">XS</option>
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+          <option value="2XL">2XL</option>
+          <option value="3XL">3XL</option>
+          <option value="4XL">4XL</option>
+          <option value="5XL">5XL</option>
+        </select>
+        
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" value="1" required>
+        
+        <button type="submit">Add Product</button>
+      </form>
+        
+
+
+      <h2>Added Products</h2>
+      <table id="productTable">
+        <thead>
+          <tr>
+            <th>Style Number</th>
+            <!-- <th>Color</th> -->
+            <th>Size</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      
+      <button id="downloadCSV" style="display: none;">Download CSV</button>
+    </div>
+    <div class="image_container">
+      <form name="searchform">
+        <input type="text" class="searchbar" placeholder="Product id..." required>
+        <!-- <button class="refresh">Hard Refresh</button> -->
+    </form>
+      <iframe id="myntraIframe" width="700" height="800px" ></iframe>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
