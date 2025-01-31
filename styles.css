@@ -12,7 +12,7 @@ body {
   }
   
   .navbar {
-    background-color: rgb(55, 55, 175);
+    background-color: #f1f1f1;
     padding: 15px 20px;
     display: flex;
     justify-content: center;
@@ -20,13 +20,13 @@ body {
   }
   .navbar p{
     font-size: 2.8rem;
-    color: #fff;
+    color: #333;
     position: absolute;
     left: 4rem;
     font-weight: 900;
   }
   .navbar h1{
-    color: #f1f1f1;
+    color: #333;
     align-items: center;
     letter-spacing: 2px;
     font-size: 2.2rem;
