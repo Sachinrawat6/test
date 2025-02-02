@@ -6,25 +6,26 @@
   <title>Inventory App</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&amp;family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 Free CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
 </head>
 <body>
 
- <!-- Navbar -->
- <nav class="navbar">
-  <p>Qurvii</p>
-  <h1>Inventory Management System</h1>
-</nav>
-
-  <div class="container">
+  
     <!-- Sidebar -->
     <div class="sidebar">
-      <h2 class="download">Download Options</h2>
-      <button id="downloadStock">Download Inventory File</button>
-      <button id="downloadLabel">Download MRP label</button>
-      <button id="downloadBarcodes">Download Barcodes</button>
+      <h4 class="download">Qurvii</h4>
+      <div class="buttons">
+      <button id="downloadStock"><i class="fa-solid fa-download icon">  </i>   Inventory  </button>
+      <button id="downloadLabel"><i class="fa-solid fa-download icon">     </i> Labels  </button>
+      <button id="downloadBarcodes"><i class="fa-solid fa-download icon">  </i> Barcodes    </button>
+    </div>
     </div>
 
     <!-- Main Content -->
+    <div class="main_container">
+
     <div class="main-content">
       
       <!-- <hr> -->
@@ -79,10 +80,11 @@
         <input type="text" class="searchbar" placeholder="Product id..." required>
         <!-- <button class="refresh">Hard Refresh</button> -->
     </form>
-      <iframe id="myntraIframe" width="700" height="800px" ></iframe>
+      <iframe id="myntraIframe"  ></iframe>
 
     </div>
   </div>
+  
 
   <script src="app.js"></script>
 </body>
