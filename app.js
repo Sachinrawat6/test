@@ -43,6 +43,7 @@ async function fetchTitle(styleNumber) {
         color: product.COLOR || 'Unknown Color',
         id:product.id || "No id found",
         MRP:product.MRP || "",
+        rackSpace:product.rackSpace || "Default"
 
       };
     } else {
@@ -114,7 +115,8 @@ document.getElementById("downloadBarcodes").addEventListener("click", async func
   const csvContent = "Barcode,Title,Label Type,Qty\n" +( await Promise.all(products.map(async (product) => {
     const title = await fetchTitle(product.styleNumber);
     const style_color = await fetchTitle(product.styleNumber);
-    return `${generateBarcode(product.styleNumber,style_color.color, product.size)},${title.title},1 label 50mm x 25 mm on Roll - PDF,${product.quantity}`
+    const rackSpace = await fetchTitle(product.styleNumber);
+    return `${generateBarcode(product.styleNumber,style_color.color, product.size)},(${rackSpace.rackSpace}) ${title.title},1 label 50mm x 25 mm on Roll - PDF,${product.quantity}`
   }))).join("\n");
 
   const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
@@ -131,7 +133,8 @@ function generateBarcode(styleNumber, color, size) {
 document.getElementById("downloadStock").addEventListener("click",async function() {
   const csvContent = "DropshipWarehouseId,Item SkuCode,InventoryAction,QtyIncludesBlocked,Qty,RackSpace,Last Purchase Price,Notes\n" +( await Promise.all(products.map(async (product) => {
     const style_color = await fetchTitle(product.styleNumber);
-    return `22784,${generateBarcode(product.styleNumber,style_color.color, product.size)},ADD, ,${product.quantity}`
+    const rackSpace = await fetchTitle(product.styleNumber);
+    return `22784,${generateBarcode(product.styleNumber,style_color.color, product.size)},ADD, ,${product.quantity},${rackSpace.rackSpace}`
   }))).join("\n");
 
   const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
@@ -157,9 +160,6 @@ document.getElementById("downloadLabel").addEventListener("click", async functio
   link.download = "BulkGenerateProductRetailLabels.csv";
   link.click();
 });
-
-
-// searchbar 
 
 
 
@@ -189,30 +189,3 @@ inputField.addEventListener('input', async () => {
     console.log(inventoryData);
   
 });
-
-
-// // refesh button 
-// document.querySelector('.refresh').addEventListener('click',async()=>{
-//   const inputVal = inputField.value.trim();
-//   if(inventoryData.length===0){
-//     await fetchProductData();
-//   }
-
-//   const allData = inventoryData.find(item=>item.style==inputVal);
-//   if(allData){
-//     console.log(allData.id);
-//     const src = `https://www.myntra.com/tops/qurvii/qurvii-colourblocked-flared-sleeves-top/${allData.id}/buy`;
-//     iframe.src = src;
-//     searchbar.value= allData.id;
-//     console.log(allData)
-//     window.open(src, "_blank");
-//   }
-//   else{
-//     console.log("No id found of this product")
-//   }
-
-
-//     console.log(inventoryData);
-  
-
-// })
